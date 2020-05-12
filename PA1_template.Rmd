@@ -20,7 +20,7 @@ activities <- read.csv(file = 'activity.csv')
 
 ## What is mean total number of steps taken per day?
 1. Calculate the total number of steps taken per day
-```{r echo=FALSE}
+```{r include = FALSE}
 library(dplyr)
 ```
 ```{r}
@@ -32,6 +32,7 @@ totalSteps <-
 ```{r}
 with(totalSteps, hist(total))
 ```
+
 3. Calculate and report the mean and median of the total number of steps taken per day
 ```{r}
 with(totalSteps, mean(total))
@@ -40,7 +41,7 @@ with(totalSteps, median(total))
 
 ## What is the average daily activity pattern?
 1. Make a time series plot (i.e. \color{red}{\verb|type = "l"|}type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
-```{r echo=FALSE}
+```{r include = FALSE}
 library(ggplot2)
 ```
 ```{r}
@@ -70,7 +71,7 @@ sum(is.na(activities))
 ```
 2. Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
 
-Replace NA’s with the overall mean for that 5-minute interval.
+Replace NA values with the overall mean for the corresponding 5-minute interval.
 
 3. Create a new dataset that is equal to the original dataset but with the missing data filled in.
 ```{r}

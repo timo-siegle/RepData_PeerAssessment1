@@ -22,26 +22,6 @@ activities <- read.csv(file = 'activity.csv')
 ## What is mean total number of steps taken per day?
 1. Calculate the total number of steps taken per day
 
-```r
-library(dplyr)
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
 
 ```r
 activitiesByDate <- activities %>% group_by(date)
@@ -54,7 +34,8 @@ totalSteps <-
 with(totalSteps, hist(total))
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+
 3. Calculate and report the mean and median of the total number of steps taken per day
 
 ```r
@@ -76,8 +57,8 @@ with(totalSteps, median(total))
 ## What is the average daily activity pattern?
 1. Make a time series plot (i.e. \color{red}{\verb|type = "l"|}type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 
+
 ```r
-library(ggplot2)
 activitiesByInterval <- activities %>% group_by(interval)
 averageSteps <-
   activitiesByInterval %>% summarise(av = mean(steps, na.rm = T))
@@ -92,7 +73,7 @@ plot(
 )
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -119,7 +100,7 @@ sum(is.na(activities))
 ```
 2. Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
 
-Replace NA’s with the overall mean for that 5-minute interval.
+Replace NA values with the overall mean for the corresponding 5-minute interval.
 
 3. Create a new dataset that is equal to the original dataset but with the missing data filled in.
 
@@ -143,7 +124,7 @@ filledTotalSteps <-
 with(filledTotalSteps, hist(total))
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
 
 ```r
 with(filledTotalSteps, mean(total))
@@ -186,5 +167,5 @@ ggplot(averageSteps, aes(interval, av)) +
        y = "Average number of steps taken")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
 
